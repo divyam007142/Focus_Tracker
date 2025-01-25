@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">Timeless task</div>
+        <div class="header-controls">
+          <button class="btn-icon" id="helpBtn" title="Help">
+            <i class="fas fa-question-circle"></i>
+          </button>
+          <button class="btn-icon" id="settingsBtn" title="Settings">
+            <i class="fas fa-cog"></i>
+          </button>
+        </div>
+      </header>
+
+      <div class="modal" id="helpModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>How to Use Focus</h2>
+            <button class="btn-icon" id="closeHelp">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h3>Getting Started</h3>
+            <ol>
+              <li>Add a task using the task input form</li>
+              <li>Click "Start Focus" to begin your focus session</li>
+              <li>
+                Work on one task at a time - other tasks stay hidden in the
+                queue
+              </li>
+              <li>Complete tasks to earn points and build your streak</li>
+            </ol>
+            <h3>Scoring System</h3>
+            <ul>
+              <li>Complete tasks: +20 points</li>
+              <li>
+                Flow state bonus: +30 points (complete task without
+                interruptions)
+              </li>
+              <li>Pause timer: -15 points</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="settingsModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Settings</h2>
+            <button class="btn-icon" id="closeSettings">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="setting-item">
+            <label>Focus Duration (minutes)</label>
+            <input
+              type="number"
+              id="focusDuration"
+              min="1"
+              max="60"
+              value="25"
+            />
+          </div>
+          <div class="setting-item">
+            <label>Break Duration (minutes)</label>
+            <input
+              type="number"
+              id="breakDuration"
+              min="1"
+              max="30"
+              value="5"
+            />
+          </div>
+          <button class="btn primary" id="saveSettings">Save Changes</button>
+        </div>
+      </div>
+
+      <div class="timer-card">
+        <div class="timer-display">25:00</div>
+        <div class="status">Time to focus</div>
+        <div class="controls">
+          <button class="btn" id="resetBtn">Reset</button>
+          <button class="btn primary" id="startBtn">Start Focus</button>
+          <button class="btn" id="breakBtn">Take Break</button>
+        </div>
+      </div>
+
+      <div class="stats-container">
+        <div class="stat-card">
+          <div class="stat-value">100</div>
+          <div class="stat-label">Focus Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">0</div>
+          <div class="stat-label">Tasks Completed</div>
+        </div>
+      </div>
+
+      <div class="task-section">
+        <div class="task-input">
+          <form id="taskForm">
+            <div class="input-group">
+              <input
+                type="text"
+                id="taskName"
+                placeholder="What are you working on?"
+                required
+              />
+            </div>
+            <button type="submit" class="btn primary">Add Task</button>
+          </form>
+        </div>
+
+        <div class="task-container">
+          <div class="task-header">
+            <h3>Current Task</h3>
+            <button id="toggleQueue" class="queue-toggle">Show Queue</button>
+          </div>
+          <div id="currentTask" class="current-task">
+            <p id="currentTaskText">No task</p>
+          </div>
+          <div id="taskQueue" class="task-queue">
+            <h4>Upcoming Tasks</h4>
+            <ul id="taskList" class="task-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
